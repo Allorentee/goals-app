@@ -1,0 +1,36 @@
+name: Run Tests
+
+on:
+  push:
+    branches:
+      - main  # Puedes ajustar la rama según tus necesidades
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run tests
+      run: npm test
+
+    - name: Check test status
+      run: |
+        test_result=$?
+        if [ $test_result -ne 0 ]; then
+          echo "Error: Tests failed. Push not allowed."
+          exit 1
+        fi
+
+    - name: Finalize
+      run: echo "Tests passed. Ready to push."
