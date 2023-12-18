@@ -1,4 +1,10 @@
-export function Columns({ columns }: { columns: any[] }) {
+import { Column } from './Table.props'
+
+interface Props {
+  readonly columns: Column[]
+}
+
+export function Columns({ columns }: Props) {
   return (
     <thead>
       <tr>

@@ -8,7 +8,7 @@ interface Props {
   toggleOpen: () => void
 }
 
-export function Modal({ children, open, toggleOpen }: Props) {
+export function Modal({ children, open, toggleOpen }: Readonly<Props>) {
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={toggleOpen}>
