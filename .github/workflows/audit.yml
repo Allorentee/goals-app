@@ -16,9 +16,6 @@ jobs:
         with:
           must_deny: 'node_modules'
 
-      - name: Install modules
-        run: npm ci
-
       - name: Check tests
         run: npm run test
 
