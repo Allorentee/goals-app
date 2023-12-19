@@ -8,7 +8,6 @@ export function ModalAddProyect() {
   const handleSubmit = (e: any) => {
     e.preventDefault()
     const data = Object.fromEntries(new FormData(e.target))
-    console.log({ data })
     const proyect = {
       ...data,
       id: crypto.randomUUID(),
@@ -19,7 +18,7 @@ export function ModalAddProyect() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Input label="Nombre del proyecto" name="proyecto"></Input>
+      <Input label="Nombre del proyecto" name="name"></Input>
       <div className="p-4 w-full flex justify-center">
         <Button type="submit" title={es['common.project.add']}></Button>
       </div>

@@ -1,13 +1,8 @@
 import { Button, Columns, Rows } from '..'
 import { es } from '../../../locales/es'
+import { TableProps } from './Table.props'
 
-interface Props {
-  columns: any
-  rows: any
-  add: any
-}
-
-export function Table({ columns, rows, add }: Props) {
+export function Table({ columns, rows, add }: TableProps) {
   return (
     <section className="bg-gray-900 rounded-lg">
       <div className="mx-auto max-w-7xl">

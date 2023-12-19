@@ -1,10 +1,6 @@
-import React from 'react'
+import { ButtonProps } from './Button.props'
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  readonly title: string
-}
-
-export function Button({ title, ...props }: ButtonProps) {
+export function Button({ title, ...props }: Readonly<ButtonProps>) {
   return (
     <button
       {...props}

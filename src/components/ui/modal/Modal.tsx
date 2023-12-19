@@ -1,14 +1,9 @@
 import { Fragment } from 'react'
 
 import { Dialog, Transition } from '@headlessui/react'
+import { ModalProps } from './Modal.props'
 
-interface Props {
-  children: JSX.Element
-  open: boolean
-  toggleOpen: () => void
-}
-
-export function Modal({ children, open, toggleOpen }: Readonly<Props>) {
+export function Modal({ children, open, toggleOpen }: Readonly<ModalProps>) {
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={toggleOpen}>

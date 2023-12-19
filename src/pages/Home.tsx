@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Modal } from '../components/ui/modal/Modal'
+import { Modal } from '../components/ui/Modal/Modal'
 import { Table } from '../components/ui'
 import { LayoutSlideBar } from '../components/layouts/Layout'
 import { navigation } from '../constants/navigation'
