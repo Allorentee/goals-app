@@ -1,4 +1,4 @@
-import { useProyects } from '../context/proyects/hook/useProyects'
+import { useProyects } from '../context/proyects/context/proyects'
 import { es } from '../locales/es'
 import { Button, Input } from './ui'
 

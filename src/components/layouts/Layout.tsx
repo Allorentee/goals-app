@@ -1,9 +1,10 @@
-import { Fragment, useState } from 'react'
+import { Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import { classNames } from '../../utils/classes'
-import { NavItem } from '../../constants/navigation.types'
 import { User } from '../../models/User'
+import { NavigationMenu } from '../NavItem'
+import { useToggle } from '../../hooks/useToggle'
+import { NavItem } from '../../constants/navigation.types'
 
 interface Props {
   user?: User
@@ -17,17 +18,13 @@ export function LayoutSlideBar({
   user,
   teams
 }: Readonly<Props>) {
-  const [sidebarOpen, setSidebarOpen] = useState(false)
+  const { state: sidebarOpen, toggle } = useToggle()
 
   return (
     <div>
       {/* Mobile version */}
       <Transition.Root show={sidebarOpen} as={Fragment}>
-        <Dialog
-          as="div"
-          className="relative z-50 lg:hidden"
-          onClose={setSidebarOpen}
-        >
+        <Dialog as="div" className="relative z-50 lg:hidden" onClose={toggle}>
           <Transition.Child
             as={Fragment}
             enter="transition-opacity ease-linear duration-300"
@@ -64,7 +61,7 @@ export function LayoutSlideBar({
                     <button
                       type="button"
                       className="-m-2.5 p-2.5"
-                      onClick={() => setSidebarOpen(false)}
+                      onClick={toggle}
                     >
                       <span className="sr-only">Close sidebar</span>
                       <XMarkIcon
@@ -86,49 +83,12 @@ export function LayoutSlideBar({
                   <nav className="flex flex-1 flex-col">
                     <ul className="flex flex-1 flex-col gap-y-7">
                       <li>
-                        <ul className="-mx-2 space-y-1">
-                          {navigation.map((item) => (
-                            <li key={item.name}>
-                              <a
-                                href={item.href}
-                                className={classNames(
-                                  item.current
-                                    ? 'bg-gray-800 text-white'
-                                    : 'text-gray-400 hover:text-white hover:bg-gray-800',
-                                  'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
-                                )}
-                              >
-                                <item.icon
-                                  className="h-6 w-6 shrink-0"
-                                  aria-hidden="true"
-                                />
-                                {item.name}
-                              </a>
-                            </li>
-                          ))}
-                        </ul>
+                        <NavigationMenu menu={navigation}></NavigationMenu>
                       </li>
                       <li>
-                        <ul className="-mx-2 mt-2 space-y-1">
-                          {teams?.map((team) => (
-                            <li key={team.name}>
-                              <a
-                                href={team.href}
-                                className={classNames(
-                                  team.current
-                                    ? 'bg-gray-800 text-white'
-                                    : 'text-gray-400 hover:text-white hover:bg-gray-800',
-                                  'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
-                                )}
-                              >
-                                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-700 bg-gray-800 text-[0.625rem] font-medium text-gray-400 group-hover:text-white">
-                                  {team.name}
-                                </span>
-                                <span className="truncate">{team.name}</span>
-                              </a>
-                            </li>
-                          ))}
-                        </ul>
+                        {teams && (
+                          <NavigationMenu menu={teams}></NavigationMenu>
+                        )}
                       </li>
                     </ul>
                   </nav>
@@ -152,27 +112,7 @@ export function LayoutSlideBar({
           <nav className="flex flex-1 flex-col">
             <ul className="flex flex-1 flex-col gap-y-7">
               <li>
-                <ul className="-mx-2 space-y-1">
-                  {navigation.map((item) => (
-                    <li key={item.name}>
-                      <a
-                        href={item.href}
-                        className={classNames(
-                          item.current
-                            ? 'bg-gray-800 text-white'
-                            : 'text-gray-400 hover:text-white hover:bg-gray-800',
-                          'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
-                        )}
-                      >
-                        <item.icon
-                          className="h-6 w-6 shrink-0"
-                          aria-hidden="true"
-                        />
-                        {item.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
+                <NavigationMenu menu={navigation}></NavigationMenu>
               </li>
               {user && (
                 <li className="-mx-6 mt-auto">
@@ -199,7 +139,7 @@ export function LayoutSlideBar({
         <button
           type="button"
           className="-m-2.5 p-2.5 text-gray-400 lg:hidden"
-          onClick={() => setSidebarOpen(true)}
+          onClick={toggle}
         >
           <span className="sr-only">Open sidebar</span>
           <Bars3Icon className="h-6 w-6" aria-hidden="true" />
@@ -216,7 +156,6 @@ export function LayoutSlideBar({
           />
         </a>
       </div>
-
       <main className="py-10 lg:pl-72 h-screen">
         <div className="px-4 sm:px-6 lg:px-8 ">{children}</div>
       </main>

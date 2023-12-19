@@ -3,8 +3,8 @@ import { Table } from '../components/ui'
 import { LayoutSlideBar } from '../components/layouts/Layout'
 import { navigation } from '../constants/navigation'
 import { ModalAddProyect } from '../components/ModalAddProyect'
-import { useProyects } from '../context/proyects/hook/useProyects'
 import { useToggle } from '../hooks/useToggle'
+import { useProyects } from '../context/proyects/context/proyects'
 
 export function Home() {
   const { proyects } = useProyects()
