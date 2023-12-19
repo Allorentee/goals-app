@@ -3,10 +3,10 @@ import { Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { ModalProps } from './Modal.props'
 
-export function Modal({ children, open, toggleOpen }: Readonly<ModalProps>) {
+export function Modal({ children, open, toggleModal }: Readonly<ModalProps>) {
   return (
     <Transition.Root show={open} as={Fragment}>
-      <Dialog as="div" className="relative z-10" onClose={toggleOpen}>
+      <Dialog as="div" className="relative z-10" onClose={toggleModal}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"

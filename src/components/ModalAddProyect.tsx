@@ -2,7 +2,10 @@ import { useProyects } from '../context/proyects/hook/useProyects'
 import { es } from '../locales/es'
 import { Button, Input } from './ui'
 
-export function ModalAddProyect() {
+interface Props {
+  toggleModal: () => void
+}
+export function ModalAddProyect({ toggleModal }: Readonly<Props>) {
   const { addProyect } = useProyects()
 
   const handleSubmit = (e: any) => {
@@ -14,6 +17,7 @@ export function ModalAddProyect() {
       tasks: 0
     }
     addProyect(proyect)
+    toggleModal()
   }
 
   return (

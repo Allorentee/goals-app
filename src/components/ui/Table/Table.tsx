@@ -2,7 +2,7 @@ import { Button, Columns, Rows } from '..'
 import { es } from '../../../locales/es'
 import { TableProps } from './Table.props'
 
-export function Table({ columns, rows, add }: TableProps) {
+export function Table({ columns, rows, add }: Readonly<TableProps>) {
   return (
     <section className="bg-gray-900 rounded-lg">
       <div className="mx-auto max-w-7xl">
