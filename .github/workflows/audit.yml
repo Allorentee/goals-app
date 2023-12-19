@@ -15,6 +15,8 @@ jobs:
         uses: dkershner6/gitignore-parser@v1
         with:
           must_deny: 'node_modules'
+      - name: Install dependencies
+        run: npm i
 
       - name: Check tests
         run: npm run test
