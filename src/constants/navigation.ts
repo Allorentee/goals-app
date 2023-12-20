@@ -6,7 +6,7 @@ import {
 } from '@heroicons/react/24/outline'
 
 export const navigation: NavItem[] = [
-  { name: 'Proyectos', href: '#', icon: FolderIcon, current: false },
-  { name: 'Tareas', href: '#', icon: DocumentTextIcon, current: false },
+  { name: 'Proyectos', href: '/', icon: FolderIcon, current: false },
+  { name: 'Tareas', href: '/tasks', icon: DocumentTextIcon, current: false },
   { name: 'Calendario', href: '#', icon: CalendarIcon, current: false }
 ]
