@@ -1,4 +1,4 @@
-export function Rows({ rows }: { rows: any[] }) {
+export function Rows({ rows }: { readonly rows: any[] }) {
   return (
     <tbody className="divide-y divide-gray-800">
       {rows.map((row) => (
@@ -11,8 +11,7 @@ export function Rows({ rows }: { rows: any[] }) {
           </td>
           <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
             <a href="#" className="text-indigo-400 hover:text-indigo-300">
-              Edit
-              <span className="sr-only">, {row.name}</span>
+              Edit<span className="sr-only">{row.name}</span>
             </a>
           </td>
         </tr>

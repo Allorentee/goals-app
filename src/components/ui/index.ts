@@ -1,5 +1,5 @@
-export { Input } from './input/Input'
+export { Input } from './Input/Input'
 export { Table } from './Table/Table'
 export { Rows } from './Table/Rows'
 export { Columns } from './Table/Columns'
-export { Button } from './button/Button'
+export { Button } from './Button/Button'

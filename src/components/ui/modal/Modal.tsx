@@ -1,17 +1,12 @@
 import { Fragment } from 'react'
 
 import { Dialog, Transition } from '@headlessui/react'
+import { ModalProps } from './Modal.props'
 
-interface Props {
-  children: JSX.Element
-  open: boolean
-  toggleOpen: () => void
-}
-
-export function Modal({ children, open, toggleOpen }: Props) {
+export function Modal({ children, open, toggleModal }: Readonly<ModalProps>) {
   return (
     <Transition.Root show={open} as={Fragment}>
-      <Dialog as="div" className="relative z-10" onClose={toggleOpen}>
+      <Dialog as="div" className="relative z-10" onClose={toggleModal}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -23,7 +18,6 @@ export function Modal({ children, open, toggleOpen }: Props) {
         >
           <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
         </Transition.Child>
-
         <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
           <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
             <Transition.Child
